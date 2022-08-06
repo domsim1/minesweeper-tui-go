@@ -24,8 +24,8 @@ var (
 	output    = bufio.NewWriter(os.Stdout)
 	screen    = new(bytes.Buffer)
 	selected  = 0
-	x, y      = 8, 8
-	minecount = 10
+	x, y      = 16, 16
+	minecount = 40
 	r         = rand.New(rand.NewSource(time.Now().UnixNano()))
 
 	correctflags = 0
