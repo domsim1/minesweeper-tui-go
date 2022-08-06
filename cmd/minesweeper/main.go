@@ -29,6 +29,7 @@ var (
 	r         = rand.New(rand.NewSource(time.Now().UnixNano()))
 
 	correctflags = 0
+	isMineHit    = false
 )
 
 func main() {
@@ -164,6 +165,9 @@ func printGrid(grid []byte) {
 	if correctflags == minecount {
 		fmt.Fprintf(screen, "-- YOU WIN --")
 	}
+	if isMineHit {
+		fmt.Fprintf(screen, "-- YOU LOSE --")
+	}
 }
 
 func getValue(field byte) byte {
@@ -191,6 +195,7 @@ func open(grid []byte) {
 		for idx, val := range grid {
 			if isMine(val) {
 				grid[idx] |= OPEN
+				isMineHit = true
 			}
 		}
 		return
